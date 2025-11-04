@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>America Through The Journalist Glass</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Background Images Container -->
+    <div class="background-container">
+        <div class="main-bg"></div>
+        <div class="sub-bg"></div>
+    </div>
+
+    <!-- Main Content Container -->
+    <div class="content-container">
+        <!-- TODO: add header pngs -->
+         <div>Header</div>
+        <!-- TODO: add intro page content -->
+         <div>intro content</div>
+
+
+        <!-- Left Side - State Buttons -->
+        <div class="state-buttons-container">
+            <button class="state-btn" data-state="Virginia">Virginia</button>
+            <button class="state-btn" data-state="Rhode Island">Rhode Island</button>
+            <button class="state-btn" data-state="Pennsylvania">Pennsylvania</button>
+            <button class="state-btn" data-state="New Hampshire">New Hampshire</button>
+            <button class="state-btn" data-state="Delaware">Delaware</button>
+            <button class="state-btn" data-state="Massachusetts">Massachusetts</button>
+            <button class="state-btn" data-state="New York">New York</button>
+            <button class="state-btn" data-state="Kentucky">Kentucky</button>
+            <button class="state-btn" data-state="Washington City [D.C.]">Washington City [D.C.]</button>
+        </div>
+
+        <!-- Center - PNG Display Area -->
+        <div class="png-display-container">
+            <img id="displayPng" src="1770-1795/Blank1770.png" alt="Historical Map">
+        </div>
+
+        <!-- Right Side - Time Buttons and Table -->
+        <div class="right-panel">
+            <!-- Time Button Group -->
+            <div class="time-buttons-container">
+                <button class="time-btn active" data-period="1770-1795">1770-1795</button>
+                <button class="time-btn" data-period="1796-1809">1796-1809</button>
+            </div>
+
+            <!-- Publications Table -->
+            <div class="table-container">
+                <table class="publications-table">
+                    <thead>
+                        <tr>
+                            <th>Publications</th>
+                        </tr>
+                    </thead>
+                    <tbody id="publicationsTableBody">
+                        <!-- Table rows will be populated by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
