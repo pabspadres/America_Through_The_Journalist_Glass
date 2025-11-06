@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Image Map Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        #testImage { max-width: 100%; height: auto; border: 2px solid #333; }
+        .info { background: #f0f0f0; padding: 10px; margin: 10px 0; }
+    </style>
+</head>
+<body>
+    <h2>Simple Image Map Test</h2>
+    
+    <div class="info">
+        <strong>Instructions:</strong> Try clicking on different areas of the map. 
+        If the coordinates are working, you should see alerts when clicking on states.
+    </div>
+    
+    <div class="info" id="imageInfo">
+        Image loading...
+    </div>
+    
+    <!-- Simple image map without any scaling -->
+    <img id="testImage" src="1796-1809/Blank1796.png" usemap="#simple-map" alt="Test Map">
+    
+    <map name="simple-map">
+        <!-- Let's test with just a few states and simple coordinates -->
+        <area alt="Virginia-Test" title="Virginia Test" href="#" coords="400,1000,600,1000,600,1200,400,1200" shape="rect" onclick="alert('Virginia rectangle clicked!'); return false;">
+        <area alt="Massachusetts-Test" title="Massachusetts Test" href="#" coords="1000,600,1200,600,1200,800,1000,800" shape="rect" onclick="alert('Massachusetts rectangle clicked!'); return false;">
+        <!-- Original Virginia polygon (smaller subset for testing) -->
+        <area alt="Virginia-Original" title="Virginia Original" href="#" coords="564,1527,675,1428,829,1159,1384,1133,1462,972,1482,879,1492,564,1527" shape="poly" onclick="alert('Virginia polygon clicked!'); return false;">
+    </map>
+    
+    <div class="info">
+        <strong>Test Results:</strong>
+        <ul>
+            <li>Try clicking in the middle-left area (should be Virginia rectangle)</li>
+            <li>Try clicking in the upper-right area (should be Massachusetts rectangle)</li>
+            <li>Try clicking in the lower area where Virginia should be (original coordinates)</li>
+        </ul>
+    </div>
+    
+    <script>
+        const img = document.getElementById('testImage');
+        const info = document.getElementById('imageInfo');
+        
+        img.onload = function() {
+            info.innerHTML = `
+                <strong>Image loaded successfully!</strong><br>
+                Natural size: ${img.naturalWidth} x ${img.naturalHeight}px<br>
+                Displayed size: ${img.clientWidth} x ${img.clientHeight}px<br>
+                Scale: ${(img.clientWidth / img.naturalWidth * 100).toFixed(1)}%
+            `;
+        };
+        
+        img.onerror = function() {
+            info.innerHTML = '<strong style="color: red;">❌ Image failed to load!</strong>';
+        };
+        
+        // Add click tracking
+        img.addEventListener('click', function(e) {
+            const rect = img.getBoundingClientRect();
+            const x = Math.round(e.clientX - rect.left);
+            const y = Math.round(e.clientY - rect.top);
+            console.log(`Clicked at: ${x}, ${y}`);
+        });
+    </script>
+    
+    <div class="info">
+        <strong>Debug Info:</strong> Check the browser console for click coordinates.
+    </div>
+</body>
+</html>

@@ -1,0 +1,308 @@
+/* Custom Fonts */
+@font-face {
+    font-family: 'Engravers';
+    src: url('fonts/engravers.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Caslon Bold';
+    src: url('fonts/caslonbold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Caslon Roman';
+    src: url('fonts/caslonroman.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden; /* No scrolling on landing page */
+    font-family: 'Caslon Roman', 'Times New Roman', serif;
+}
+
+/* Background Container */
+.background-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -1;
+}
+
+.main-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-image: url('Background.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Landing Container */
+.landing-container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+/* Title Section - 20% of screen vertically */
+.title-section {
+    height: 20vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+/* Main Title */
+.main-title {
+    font-family: 'Engravers', 'Times New Roman', serif;
+    font-size: 4.5vw; /* Responsive size to fit screen width */
+    color: black;
+    text-align: center;
+    margin-top: 20px;
+    line-height: 1;
+    white-space: nowrap;
+}
+
+/* Lines and Text Section */
+.lines-text-section {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+.horizontal-line {
+    width: calc(100% - 20px); /* Reduced from 40px to 20px for smaller gaps */
+    height: 3px;
+    background-color: black;
+    margin: 0 10px; /* Reduced from 20px to 10px on each side */
+}
+
+.top-line {
+    margin-bottom: 10px;
+}
+
+.bottom-line {
+    margin-top: 10px;
+}
+
+.text-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    height: 25px;
+}
+
+.text-container span {
+    font-family: 'Caslon Bold', 'Times New Roman', serif;
+    font-size: 20px;
+    color: black;
+}
+
+.left-text {
+    flex: 0 0 auto;
+}
+
+.center-text {
+    flex: 1;
+    text-align: center;
+}
+
+.right-text {
+    flex: 0 0 auto;
+}
+
+/* Bottom Section - 80% of screen vertically */
+.bottom-section {
+    height: 80vh;
+    width: 100%;
+    display: flex;
+    position: relative;
+}
+
+/* About Section - 25% horizontally */
+.about-section {
+    width: 25%;
+    height: 100%;
+    position: relative;
+    padding-right: 10px;
+}
+
+.vertical-line {
+    position: absolute;
+    right: 0;
+    top: 15px;
+    bottom: 0;
+    width: 3px;
+    background-color: black;
+}
+
+.about-content {
+    height: 100%;
+    padding: 15px 15px 20px 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.about-title {
+    font-family: 'Caslon Bold', 'Times New Roman', serif;
+    color: black;
+    font-size: 3.2vw;
+    line-height: 1.1;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    text-align: center;
+}
+
+.title-line {
+    display: block;
+}
+
+.about-text {
+    font-family: 'Caslon Roman', 'Times New Roman', serif;
+    color: black;
+    font-size: 1.4vw;
+    line-height: 1.4;
+    margin-bottom: 20px;
+    margin-right: 10px;
+    text-align: center;
+}
+
+.view-button {
+    font-family: 'Caslon Roman', 'Times New Roman', serif;
+    background-color: transparent;
+    border: 2px solid black;
+    color: black;
+    padding: 15px 60px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1.8vw;
+    margin-right: 10px;
+    margin-bottom: 20px;
+    align-self: center;
+}
+
+.view-button:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Gallery Section - 75% horizontally */
+.gallery-section {
+    width: 75%;
+    height: 100%;
+    position: relative;
+    padding: 10px;
+}
+
+.image-gallery {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.gallery-image {
+    position: absolute;
+    border-radius: 6px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+    transition: all 0.8s ease-in-out;
+    opacity: 0;
+    object-fit: cover;
+    display: block;
+    background-color: rgba(255, 255, 255, 0.95);
+    border: 2px solid rgba(139, 69, 19, 0.3);
+}
+
+.gallery-image.visible {
+    opacity: 1;
+}
+
+.gallery-image.fadeout {
+    opacity: 0;
+    transform: scale(0.8);
+}
+
+.gallery-image:hover {
+    transform: scale(1.05) rotate(0deg) !important;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+    z-index: 10;
+    transition: all 0.3s ease-in-out;
+}
+
+.gallery-image.visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.gallery-image.fadeout {
+    opacity: 0;
+    transform: scale(0.8);
+}
+
+/* Fade transition for page change */
+.fade-out {
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+    .main-title {
+        font-size: 5vw;
+    }
+    
+    .about-title {
+        font-size: 3.2vw;
+    }
+    
+    .about-text {
+        font-size: 1.2vw;
+    }
+    
+    .view-button {
+        font-size: 1.3vw;
+    }
+}
+
+@media (max-width: 800px) {
+    .main-title {
+        font-size: 6vw;
+    }
+    
+    .about-title {
+        font-size: 4vw;
+    }
+    
+    .about-text {
+        font-size: 1.5vw;
+    }
+    
+    .view-button {
+        font-size: 1.6vw;
+    }
+}

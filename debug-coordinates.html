@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Debug Image Map Coordinates</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .debug-info { background: #f0f0f0; padding: 10px; margin: 10px 0; }
+        .image-container { position: relative; display: inline-block; border: 2px solid #333; }
+        #testImage { max-width: 800px; height: auto; }
+        .coordinate-overlay { 
+            position: absolute; 
+            background: rgba(255, 0, 0, 0.3); 
+            border: 1px solid red; 
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <h2>Debug Image Map Coordinates</h2>
+    
+    <div class="debug-info">
+        <h3>Image Information:</h3>
+        <div id="imageInfo">Loading...</div>
+    </div>
+    
+    <div class="debug-info">
+        <h3>Scaling Information:</h3>
+        <div id="scalingInfo">Loading...</div>
+    </div>
+    
+    <div class="image-container">
+        <img id="testImage" src="1796-1809/Blank1796.png" />
+        <!-- Coordinate overlays will be added here -->
+    </div>
+    
+    <div class="debug-info">
+        <h3>Test a State (Click on Virginia):</h3>
+        <p>Try clicking on Virginia to see if coordinates align</p>
+        <div id="clickInfo">Click on the map above...</div>
+    </div>
+    
+    <script>
+        const img = document.getElementById('testImage');
+        const imageInfo = document.getElementById('imageInfo');
+        const scalingInfo = document.getElementById('scalingInfo');
+        const clickInfo = document.getElementById('clickInfo');
+        const container = document.querySelector('.image-container');
+        
+        // Virginia coordinates from your map
+        const virginiaCoords = "564,1527,566,1520,572,1517,581,1514,587,1508,590,1499,595,1494,597,1482,617,1473,624,1463,627,1450,675,1428,679,1418,678,1414,665,1402,658,1395,653,1381,635,1373,636,1360,610,1350,607,1342,610,1330,616,1324,617,1314,630,1297,632,1282,646,1276,645,1263,658,1262,664,1272,682,1266,682,1246,677,1239,691,1229,685,1218,688,1211,698,1211,703,1220,711,1223,716,1215,721,1210,720,1202,740,1191,739,1160,733,1156,733,1140,742,1136,750,1145,755,1171,829,1159,834,1175,839,1181,842,1207,848,1202,858,1198,862,1189,865,1185,875,1184,884,1187,890,1184,894,1169,905,1166,917,1172,932,1159,942,1156,955,1159,992,1181,1023,1194,1016,1213,1014,1240,1008,1246,1010,1255,1017,1262,1020,1281,1032,1291,1053,1294,1060,1300,1069,1302,1074,1317,1078,1324,1084,1333,1091,1339,1105,1343,1113,1346,1130,1346,1136,1384,1133,1402,1139,1415,1147,1436,1089,1453,1040,1462,972,1473,927,1482,879,1492";
+        
+        img.onload = function() {
+            // Display actual image dimensions
+            imageInfo.innerHTML = `
+                <strong>Natural dimensions:</strong> ${img.naturalWidth} x ${img.naturalHeight}px<br>
+                <strong>Displayed dimensions:</strong> ${img.clientWidth} x ${img.clientHeight}px<br>
+                <strong>Scale factors:</strong> X: ${(img.clientWidth / img.naturalWidth).toFixed(3)}, Y: ${(img.clientHeight / img.naturalHeight).toFixed(3)}
+            `;
+            
+            // Your current script assumes these dimensions
+            const assumedWidth = 1640;
+            const assumedHeight = 2360;
+            
+            scalingInfo.innerHTML = `
+                <strong>Your script assumes:</strong> ${assumedWidth} x ${assumedHeight}px<br>
+                <strong>Actual image:</strong> ${img.naturalWidth} x ${img.naturalHeight}px<br>
+                <strong>Dimension match:</strong> ${img.naturalWidth === assumedWidth && img.naturalHeight === assumedHeight ? '✓ MATCH' : '✗ MISMATCH'}<br>
+                <strong>Scale factors (script):</strong> X: ${(img.clientWidth / assumedWidth).toFixed(3)}, Y: ${(img.clientHeight / assumedHeight).toFixed(3)}
+            `;
+            
+            // Create overlay for Virginia coordinates
+            createCoordinateOverlay();
+        };
+        
+        function createCoordinateOverlay() {
+            const coords = virginiaCoords.split(',').map(Number);
+            const points = [];
+            
+            // Convert coordinate pairs to points
+            for (let i = 0; i < coords.length; i += 2) {
+                points.push({ x: coords[i], y: coords[i + 1] });
+            }
+            
+            // Scale coordinates
+            const assumedWidth = 1640;
+            const assumedHeight = 2360;
+            const scaleX = img.clientWidth / assumedWidth;
+            const scaleY = img.clientHeight / assumedHeight;
+            
+            const scaledPoints = points.map(p => ({
+                x: Math.round(p.x * scaleX),
+                y: Math.round(p.y * scaleY)
+            }));
+            
+            // Find bounding box
+            const minX = Math.min(...scaledPoints.map(p => p.x));
+            const maxX = Math.max(...scaledPoints.map(p => p.x));
+            const minY = Math.min(...scaledPoints.map(p => p.y));
+            const maxY = Math.max(...scaledPoints.map(p => p.y));
+            
+            // Create overlay div
+            const overlay = document.createElement('div');
+            overlay.className = 'coordinate-overlay';
+            overlay.style.left = minX + 'px';
+            overlay.style.top = minY + 'px';
+            overlay.style.width = (maxX - minX) + 'px';
+            overlay.style.height = (maxY - minY) + 'px';
+            overlay.title = 'Virginia coordinates overlay';
+            
+            container.appendChild(overlay);
+        }
+        
+        // Add click detection
+        img.addEventListener('click', function(e) {
+            const rect = img.getBoundingClientRect();
+            const x = Math.round(e.clientX - rect.left);
+            const y = Math.round(e.clientY - rect.top);
+            
+            // Convert back to original coordinates
+            const assumedWidth = 1640;
+            const assumedHeight = 2360;
+            const scaleX = img.clientWidth / assumedWidth;
+            const scaleY = img.clientHeight / assumedHeight;
+            
+            const originalX = Math.round(x / scaleX);
+            const originalY = Math.round(y / scaleY);
+            
+            clickInfo.innerHTML = `
+                <strong>Click position:</strong><br>
+                Displayed: ${x}, ${y}<br>
+                Original scale: ${originalX}, ${originalY}<br>
+                <em>If clicking on Virginia, these coordinates should be within the Virginia coordinate range</em>
+            `;
+        });
+    </script>
+</body>
+</html>

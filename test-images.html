@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Test</title>
+</head>
+<body>
+    <h2>Testing Image Paths</h2>
+    <div id="testResults"></div>
+    
+    <script>
+        const testPaths = [
+            'landing_page_png/img1.png',
+            './landing_page_png/img1.png',
+            'img1.png',
+            './img1.png'
+        ];
+        
+        const results = document.getElementById('testResults');
+        
+        testPaths.forEach((path, index) => {
+            const div = document.createElement('div');
+            div.innerHTML = `<p>Testing path ${index + 1}: ${path}</p>`;
+            
+            const img = document.createElement('img');
+            img.style.width = '200px';
+            img.style.height = 'auto';
+            img.style.border = '2px solid #ccc';
+            img.style.margin = '10px';
+            
+            img.onload = function() {
+                div.style.color = 'green';
+                div.innerHTML += '<p>✓ SUCCESS - Image loaded!</p>';
+            };
+            
+            img.onerror = function() {
+                div.style.color = 'red';
+                div.innerHTML += '<p>✗ FAILED - Image could not load</p>';
+            };
+            
+            img.src = path;
+            div.appendChild(img);
+            results.appendChild(div);
+        });
+    </script>
+</body>
+</html>

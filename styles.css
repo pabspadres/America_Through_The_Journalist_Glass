@@ -1,3 +1,25 @@
+/* Custom Fonts */
+@font-face {
+    font-family: 'CaslonBold';
+    src: url('fonts/caslonbold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'CaslonRoman';
+    src: url('fonts/caslonroman.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Engravers';
+    src: url('fonts/engravers.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 /* Reset and Base Styles */
 * {
     margin: 0;
@@ -7,8 +29,49 @@
 
 html, body {
     height: 100%;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: 'CaslonRoman', serif;
     overflow-x: hidden;
+    overflow-y: auto; /* Allow vertical scrolling for large map */
+}
+
+/* Top Left Title and Welcome Text */
+.top-left-content {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 10;
+    max-width: 500px;
+}
+
+.page-title {
+    font-family: 'Engravers', serif;
+    color: black;
+    font-size: 60px;
+    line-height: 1.2;
+    margin-bottom: 8px;
+    text-align: center;
+}
+
+.title-line-1,
+.title-line-2 {
+    display: block;
+}
+
+.welcome-text {
+    font-family: 'CaslonRoman', serif;
+    color: black;
+    font-size: 22px;
+    line-height: 1.4;
+    text-align: center;
+}
+
+.welcome-line-1 {
+    margin-bottom: 4px;
+    font-weight: bold;
+}
+
+.welcome-line-2 {
+    margin: 0;
 }
 
 /* Background Container */
@@ -27,7 +90,7 @@ html, body {
     left: 0;
     width: 100%;
     height: 100vh;
-    background-image: url('main_bg.png');
+    background-image: url('Background.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -71,7 +134,7 @@ html, body {
     background-color: transparent;
     border: 2px solid #9d6d26;
     color: black;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: 'Caslon Bold', 'Times New Roman', serif;
     font-size: 14px;
     padding: 8px 16px;
     border-radius: 8px;
@@ -98,11 +161,11 @@ html, body {
 .png-display-container {
     position: absolute;
     left: 45%;
-    top: 23vh; /* Moved lower on screen */
+    top: 20vh;
     transform: translateX(-50%);
-    width: 80%; /* Made bigger */
-    max-width: 850px; /* Increased max width */
-    height: 80vh; /* Increased height */
+    width: 135%; /* Made slightly bigger */
+    max-width: 1600px; /* Increased max width */
+    height: 170vh; /* Made slightly taller */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -129,43 +192,6 @@ html, body {
     z-index: 10;
 }
 
-/* Time Button Group */
-.time-buttons-container {
-    display: flex;
-    gap: 0;
-    margin-bottom: 10px;
-}
-
-.time-btn {
-    background-color: transparent;
-    border: 2px solid #9d6d26;
-    color: black;
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 14px;
-    padding: 10px 20px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    flex: 1;
-}
-
-.time-btn:first-child {
-    border-radius: 8px 0 0 8px;
-    border-right: none;
-}
-
-.time-btn:last-child {
-    border-radius: 0 8px 8px 0;
-}
-
-.time-btn:hover {
-    background-color: rgba(157, 109, 38, 0.1);
-}
-
-.time-btn.active {
-    background-color: #9d6d26;
-    color: white;
-}
-
 /* Publications Table */
 .table-container {
     width: 100%;
@@ -179,7 +205,7 @@ html, body {
 .publications-table {
     width: 100%;
     border-collapse: collapse;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: 'Caslon Bold', 'Times New Roman', serif;
 }
 
 .publications-table thead {
@@ -293,6 +319,33 @@ html, body {
     }
 }
 
+/* America Title */
+.america-title {
+    position: fixed;
+    top: 30px;
+    left: 30px;
+    font-family: 'Engravers', 'Times New Roman', serif;
+    font-size: 100px;
+    color: #9d6d26;
+    z-index: 100;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Font Test */
+.font-test {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    font-family: 'Caslon Bold', 'Times New Roman', serif;
+    font-size: 24px;
+    color: #9d6d26;
+    z-index: 100;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: 2px solid #9d6d26;
+}
+
 /* Loading State */
 .loading {
     opacity: 0.5;
@@ -300,3 +353,272 @@ html, body {
 }
 
 /* No PNG Transitions - Sharp Swap */
+
+/* Image Map Styling */
+area {
+    cursor: pointer;
+}
+
+/* Image Map Container */
+.png-display-container img[usemap] {
+    cursor: pointer;
+}
+
+/* Add a glow effect overlay for state hover */
+.png-display-container {
+    position: relative;
+}
+
+.png-display-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Visual feedback for selected states will be handled via PNG changes */
+
+/* Modal Overlay Styles */
+.table-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.35);
+}
+
+.modal-content {
+    position: relative;
+    width: 90%;
+    max-width: 800px;
+    max-height: 80vh;
+    background-color: transparent;
+    border-radius: 8px;
+    overflow: hidden;
+    z-index: 1001;
+}
+
+.modal-table-container {
+    width: 100%;
+    height: 100%;
+    max-height: 70vh;
+    overflow-y: auto;
+    border: 3px solid #c19c63;
+    border-radius: 8px;
+}
+
+.modal-publications-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: transparent;
+}
+
+/* Header Row */
+.header-row th {
+    background-color: #c19c63;
+    color: #f6efe5;
+    font-family: 'CaslonBold', serif;
+    font-size: 24px;
+    padding: 20px;
+    text-align: center;
+    border: 2px solid #c19c63;
+}
+
+/* Filter Row */
+.filter-row td {
+    background-color: #d8bd93;
+    padding: 15px;
+    border: 2px solid #c19c63;
+}
+
+.filter-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.dropdown-container {
+    position: relative;
+    flex: 1;
+}
+
+.filter-btn {
+    width: 100%;
+    background-color: transparent;
+    border: 2px solid #c19c63;
+    color: #f6efe5;
+    font-family: 'CaslonRoman', serif;
+    font-size: 16px;
+    padding: 12px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.2s ease;
+}
+
+.filter-btn:hover {
+    background-color: rgba(193, 156, 99, 0.1);
+}
+
+.dropdown-arrow {
+    font-size: 12px;
+    transition: transform 0.2s ease;
+}
+
+.dropdown-container.active .dropdown-arrow {
+    transform: rotate(180deg);
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: #d8bd93;
+    border: 2px solid #c19c63;
+    border-top: none;
+    border-radius: 0 0 6px 6px;
+    z-index: 1002;
+    display: none;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.dropdown-container.active .dropdown-menu {
+    display: block;
+}
+
+.dropdown-option {
+    padding: 10px 16px;
+    color: #f6efe5;
+    font-family: 'CaslonRoman', serif;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    border-bottom: 1px solid #c19c63;
+}
+
+.dropdown-option:last-child {
+    border-bottom: none;
+}
+
+.dropdown-option:hover {
+    background-color: rgba(193, 156, 99, 0.2);
+}
+
+.dropdown-option.selected {
+    background-color: #c19c63;
+    color: #f6efe5;
+}
+
+/* Publication Rows */
+.modal-publications-table tbody tr {
+    background-color: #f6efe5;
+    border: 1px solid #c19c63;
+}
+
+.modal-publications-table tbody td {
+    padding: 12px 16px;
+    color: #333;
+    font-family: 'CaslonRoman', serif;
+    font-size: 14px;
+    border: 1px solid #c19c63;
+}
+
+.modal-publications-table tbody tr:hover {
+    background-color: #c19c63;
+}
+
+.modal-publications-table tbody tr:hover td {
+    color: #f6efe5;
+}
+
+.modal-publications-table tbody tr:hover td a {
+    color: #f6efe5;
+}
+
+.modal-publications-table tbody td a {
+    color: #333;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.modal-publications-table tbody td a:hover {
+    color: #c19c63;
+    text-decoration: underline;
+}
+
+/* Close Button */
+.close-modal-btn {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    width: 40px;
+    height: 40px;
+    background-color: #c19c63;
+    color: #f6efe5;
+    border: none;
+    border-radius: 50%;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s ease;
+    z-index: 1003;
+}
+
+.close-modal-btn:hover {
+    background-color: #a0825a;
+    transform: scale(1.1);
+}
+
+/* Scrollbar Styling for Modal */
+.modal-table-container::-webkit-scrollbar {
+    width: 12px;
+}
+
+.modal-table-container::-webkit-scrollbar-track {
+    background: #d8bd93;
+}
+
+.modal-table-container::-webkit-scrollbar-thumb {
+    background: #c19c63;
+    border-radius: 6px;
+}
+
+.modal-table-container::-webkit-scrollbar-thumb:hover {
+    background: #a0825a;
+}
+
+.dropdown-menu::-webkit-scrollbar {
+    width: 8px;
+}
+
+.dropdown-menu::-webkit-scrollbar-track {
+    background: #d8bd93;
+}
+
+.dropdown-menu::-webkit-scrollbar-thumb {
+    background: #c19c63;
+    border-radius: 4px;
+}
