@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>America Through The Journalist Glass</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Background Images Container -->
+    <div class="background-container">
+        <div class="main-bg"></div>
+        <div class="sub-bg"></div>
+    </div>
+
+    <!-- Main Content Container -->
+    <div class="content-container">
+        <!-- Top Left Title and Welcome Text -->
+        <div class="top-left-content">
+            <h1 class="page-title">
+                <div class="title-line-1">America Through</div>
+                <div class="title-line-2">The Journalist Glass</div>
+            </h1>
+            <div class="welcome-text">
+                <div class="welcome-line-1">Welcome to Revolutionary America!</div>
+                <div class="welcome-line-2">Feel free to explore this interactive map to view what each state was publishing at the time. Within the map you can filter by decade and topic, so be as curious as you want.</div>
+            </div>
+        </div>
+        <!-- Left Side - Empty (was state buttons) -->
+        <div class="state-buttons-container">
+            <!-- Buttons removed but container kept for layout -->
+        </div>
+
+        <!-- Center - PNG Display Area -->
+        <div class="png-display-container">
+            <!-- Interactive Map with Image Map and JavaScript backup -->
+            <img id="displayPng" src="1796-1809/Blank1796.png" usemap="#image-map" alt="Historical Map">
+
+            <map name="image-map">
+                <area alt="Kentucky" title="Kentucky" href="#" coords="185,1549,184,1568,101,1566,100,1554,96,1550,93,1543,103,1540,103,1530,109,1520,100,1508,99,1494,96,1479,101,1473,110,1473,120,1478,130,1472,142,1459,149,1456,155,1459,159,1463,171,1463,184,1457,185,1444,193,1431,197,1423,200,1417,203,1420,201,1430,204,1434,212,1436,219,1433,220,1428,229,1424,235,1415,243,1414,246,1424,251,1428,265,1427,272,1420,275,1407,293,1402,297,1386,319,1381,325,1391,342,1394,355,1384,362,1376,364,1365,380,1355,384,1343,381,1339,378,1334,384,1327,393,1323,393,1313,398,1307,404,1311,420,1308,424,1294,426,1278,461,1273,474,1284,482,1297,497,1305,506,1311,514,1313,529,1314,553,1313,561,1308,564,1302,572,1302,581,1311,597,1321,603,1331,603,1346,614,1356,630,1363,632,1376,653,1388,653,1398,674,1417,672,1427,626,1449,623,1459,616,1469,607,1475,593,1482,591,1492,584,1501,580,1510,571,1514,562,1518,562,1527,448,1534,397,1537" shape="poly" data-state="Kentucky" onclick="selectState('Kentucky'); return false;">
+                <area alt="Washington_DC" title="Washington_DC" href="#" coords="1013,1185,1021,1175,1032,1181,1024,1191" shape="poly" data-state="Washington City [D.C.]" onclick="selectState('Washington City [D.C.]'); return false;">
+                <area alt="Delaware" title="Delaware" href="#" coords="1139,1155,1143,1159,1140,1173,1146,1178,1147,1195,1150,1197,1153,1202,1153,1217,1156,1223,1158,1237,1165,1234,1173,1234,1182,1229,1192,1225,1200,1221,1197,1214,1197,1205,1187,1198,1187,1192,1166,1169,1165,1159,1156,1155,1149,1145,1146,1138,1142,1126,1139,1116,1142,1112,1150,1103,1143,1090,1137,1089,1133,1090,1130,1097,1121,1103,1126,1115,1129,1125,1134,1134,1136,1142,1137,1147,1139,1152,1139,1155,1139,1152" shape="poly" data-state="Delaware" onclick="selectState('Delaware'); return false;">
+                <area alt="Pennsylvania" title="Pennsylvania" href="#" coords="717,953,716,962,723,984,745,1098,758,1168,1120,1107,1124,1097,1131,1091,1134,1085,1155,1072,1173,1050,1181,1039,1159,1020,1147,1020,1139,1008,1137,995,1131,987,1133,981,1139,975,1137,943,1149,930,1150,919,1146,916,1136,920,1131,919,1129,916,1126,910,1121,897,1116,884,1105,881,1101,875,1101,872,781,940,775,917,771,916,765,924,755,929,748,940,733,947" shape="poly" data-state="Pennsylvania" onclick="selectState('Pennsylvania'); return false;">
+                <area alt="New_York" title="New_York" href="#" coords="1188,557,1183,634,1230,757,1230,835,1263,937,1256,950,1231,966,1215,966,1208,962,1201,951,1195,948,1179,946,1169,937,1159,930,1157,915,1147,911,1135,915,1122,888,1121,880,1108,875,1104,869,783,940,780,915,803,897,808,887,829,871,833,859,840,854,840,836,837,830,824,834,819,832,817,829,829,817,824,811,820,804,836,790,845,774,856,769,874,766,891,762,910,761,923,756,926,750,937,748,953,746,969,737,972,732,988,724,991,714,990,707,985,701,998,700,1005,688,998,677,988,675,976,674,984,665,1003,650,1014,636,1030,608,1037,597,1062,582,1071,577,1110,569,1134,562" shape="poly" data-state="New York" onclick="selectState('New York'); return false;">
+                <area alt="New_York2" title="New_York2" href="#" coords="1294,980,1311,967,1320,960,1336,953,1343,953,1363,941,1379,935,1385,929,1395,926,1402,916,1411,909,1421,896,1423,887,1413,889,1407,900,1402,908,1397,915,1386,919,1376,924,1369,921,1381,906,1388,899,1388,896,1381,896,1373,900,1366,908,1352,918,1347,921,1340,929,1329,934,1311,947,1285,945,1281,941,1275,945,1273,955,1268,961,1260,967,1263,976,1271,982,1279,982" shape="poly" data-state="New York" onclick="selectState('New York'); return false;">
+                <area alt="Rhode_Island" title="Rhode_Island" href="#" coords="1372,866,1386,863,1395,858,1401,849,1397,843,1395,824,1384,824,1381,816,1391,806,1407,810,1408,806,1402,801,1375,798,1373,790,1359,788,1356,795,1344,798" shape="poly" data-state="Rhode Island" onclick="selectState('Rhode Island'); return false;">
+                <area alt="Massachusetts" title="Massachusetts" href="#" coords="1231,832,1342,800,1352,792,1357,787,1376,787,1378,798,1405,800,1415,792,1421,795,1423,806,1420,813,1414,823,1421,829,1436,826,1440,819,1459,819,1469,808,1472,801,1489,801,1495,792,1507,790,1514,785,1507,765,1498,750,1497,748,1492,753,1497,768,1497,781,1494,784,1463,787,1459,774,1444,762,1424,755,1417,748,1420,740,1427,733,1431,733,1440,721,1436,708,1423,707,1415,700,1398,703,1392,691,1388,691,1385,701,1379,706,1379,711,1372,716,1366,721,1344,727,1320,733,1282,743,1231,756" shape="poly" data-state="Massachusetts" onclick="selectState('Massachusetts'); return false;">
+                <area alt="Massachusetts2" title="Massachusetts2" href="#" coords="1495,849,1510,849,1526,834,1533,823,1526,821,1517,829,1504,840,1498,836,1494,842" shape="poly" data-state="Massachusetts" onclick="selectState('Massachusetts'); return false;">
+                <area alt="Massachusetts3" title="Massachusetts3" href="#" coords="1469,189,1469,202,1462,228,1465,238,1465,251,1470,259,1475,269,1479,279,1485,283,1488,299,1495,317,1499,338,1510,341,1520,343,1543,341,1544,369,1552,373,1570,370,1575,380,1575,393,1578,396,1585,395,1588,392,1592,402,1592,411,1599,414,1608,409,1615,406,1615,422,1604,432,1592,445,1582,454,1573,454,1570,464,1562,472,1540,474,1534,489,1536,503,1526,508,1520,505,1505,505,1498,518,1502,522,1507,530,1502,537,1498,563,1481,566,1475,579,1466,587,1456,586,1449,582,1436,585,1437,605,1434,615,1428,619,1427,638,1417,643,1401,643,1388,637,1384,629,1378,625,1369,603,1368,576,1357,557,1356,537,1353,535,1350,515,1342,505,1339,493,1339,466,1327,453,1331,440,1330,434,1330,424,1330,414,1330,405,1334,401,1346,399,1352,389,1352,373,1349,370,1342,370,1339,366,1339,361,1343,359,1352,354,1359,341,1365,330,1368,318,1369,308,1372,292,1363,290,1363,277,1368,264,1379,256,1381,244,1392,241,1391,219,1418,212,1424,202,1426,193,1444,188" shape="poly" data-state="Massachusetts" onclick="selectState('Massachusetts'); return false;">
+                <area alt="New_Hampshire" title="New_Hampshire" href="#" coords="1279,668,1278,691,1282,710,1281,721,1285,732,1287,739,1363,719,1371,713,1375,706,1378,700,1381,697,1382,690,1389,684,1397,685,1400,698,1413,694,1411,649,1385,642,1381,633,1375,629,1371,613,1366,606,1366,585,1355,561,1352,542,1347,536,1346,519,1334,494,1333,466,1323,452,1317,455,1308,474,1308,516,1318,524,1318,564,1307,582,1300,593,1300,616,1301,636,1292,653" shape="poly" data-state="New Hampshire" onclick="selectState('New Hampshire'); return false;">
+                <area alt="Virginia" title="Virginia" href="#" coords="564,1527,566,1520,572,1517,581,1514,587,1508,590,1499,595,1494,597,1482,617,1473,624,1463,627,1450,675,1428,679,1418,678,1414,665,1402,658,1395,653,1381,635,1373,636,1360,610,1350,607,1342,610,1330,616,1324,617,1314,630,1297,632,1282,646,1276,645,1263,658,1262,664,1272,682,1266,682,1246,677,1239,691,1229,685,1218,688,1211,698,1211,703,1220,711,1223,716,1215,721,1210,720,1202,740,1191,739,1160,733,1156,733,1140,742,1136,750,1145,755,1171,829,1159,834,1175,839,1181,842,1207,848,1202,858,1198,862,1189,865,1185,875,1184,884,1187,890,1184,894,1169,905,1166,917,1172,932,1159,942,1156,955,1159,992,1181,1023,1194,1016,1213,1014,1240,1008,1246,1010,1255,1017,1262,1020,1281,1032,1291,1053,1294,1060,1300,1069,1302,1074,1317,1078,1324,1084,1333,1091,1339,1105,1343,1113,1346,1130,1346,1136,1384,1133,1402,1139,1415,1147,1436,1089,1453,1040,1462,972,1473,927,1482,879,1492" shape="poly" data-state="Virginia" onclick="selectState('Virginia'); return false;">
+            </map>
+        </div>
+
+        <!-- Right Side - Table Only -->
+        <div class="right-panel">
+            <!-- Publications Table (hidden by default, now just for reference) -->
+            <div class="table-container" style="display: none;">
+                <table class="publications-table">
+                    <thead>
+                        <tr>
+                            <th>Publications</th>
+                        </tr>
+                    </thead>
+                    <tbody id="publicationsTableBody">
+                        <!-- Table rows will be populated by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Overlay for Publications Table -->
+    <div id="tableModal" class="table-modal" style="display: none;">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <div class="modal-table-container">
+                <table class="modal-publications-table">
+                    <thead>
+                        <tr class="header-row">
+                            <th id="stateHeader">State Publications</th>
+                        </tr>
+                        <tr class="filter-row">
+                            <td>
+                                <div class="filter-buttons">
+                                    <div class="dropdown-container">
+                                        <button class="filter-btn" id="decadeBtn">
+                                            <span>Decade</span>
+                                            <span class="dropdown-arrow">▼</span>
+                                        </button>
+                                        <div class="dropdown-menu" id="decadeDropdown">
+                                            <div class="dropdown-option" data-value="">All Decades</div>
+                                            <div class="dropdown-option" data-value="1770-1779">1770-1779</div>
+                                            <div class="dropdown-option" data-value="1780-1789">1780-1789</div>
+                                            <div class="dropdown-option" data-value="1790-1799">1790-1799</div>
+                                            <div class="dropdown-option" data-value="1800-1809">1800-1809</div>
+                                        </div>
+                                    </div>
+                                    <div class="dropdown-container">
+                                        <button class="filter-btn" id="categoryBtn">
+                                            <span>Category</span>
+                                            <span class="dropdown-arrow">▼</span>
+                                        </button>
+                                        <div class="dropdown-menu" id="categoryDropdown">
+                                            <div class="dropdown-option" data-value="">All Categories</div>
+                                            <div class="dropdown-option" data-value="Advertisements & Commerce">Advertisements & Commerce</div>
+                                            <div class="dropdown-option" data-value="Politics & Government Notices">Politics & Government Notices</div>
+                                            <div class="dropdown-option" data-value="War & International Affairs">War & International Affairs</div>
+                                            <div class="dropdown-option" data-value="Local News & Public Announcements">Local News & Public Announcements</div>
+                                            <div class="dropdown-option" data-value="Editorials & Essays">Editorials & Essays</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </thead>
+                    <tbody id="modalTableBody">
+                        <!-- Publications will be populated here -->
+                    </tbody>
+                </table>
+            </div>
+            <button class="close-modal-btn" id="closeModal">×</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

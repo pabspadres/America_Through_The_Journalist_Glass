@@ -467,7 +467,7 @@ function enterVisualization() {
     
     // Navigate to main page after fade
     setTimeout(() => {
-        window.location.href = 'index.html';
+        window.location.href = 'map.html';
     }, 1000);
 }
 
